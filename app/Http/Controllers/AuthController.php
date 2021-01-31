@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthLoginRequest;
 use App\Services\AuthService;
 
 class AuthController extends Controller
@@ -13,8 +14,10 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
-    public function login()
+    public function login(AuthLoginRequest $authLoginRequest)
     {
+        $input = $authLoginRequest->validated();
+        dd($input);
         $this->authService->login();
     }
 }
