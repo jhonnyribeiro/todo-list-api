@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Events\UserRegistered;
 use App\Exceptions\LoginInvalidException;
 use App\Exceptions\UserHasBeenTakenException;
 use App\Models\User;
@@ -49,6 +50,7 @@ class AuthService
             'confirmation_token' => Str::random(60),
         ]);
 
+        event(new UserRegistered($user));
         return $user;
     }
 }
