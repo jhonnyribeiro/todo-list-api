@@ -36,7 +36,7 @@ class WelcomeMail extends Mailable
         return $this->view('emails.welcome')
             ->subject('Bem-vindo ao '.config('app.name'))
             ->with([
-                'verifyEmailLink' => config('app.url').'/verify-mail?token='.$this->user->confirmation_token,
+                'verifyEmailLink' => config('app.url').'/verificar-email?token='.$this->user->confirmation_token,
             ]);
     }
 }
